@@ -17,6 +17,9 @@ public class RedisExecProvider {
 
     public static final String redisVersion = "7.0.15";
 
+    //(windows-version)https://github.com/zkteco-home/redis-windows/blob/master/redis-server.exe
+    public static final String redisVersionWindows = "7.2.5";
+
     public static RedisExecProvider defaultProvider() {
         return new RedisExecProvider();
     }
@@ -32,6 +35,9 @@ public class RedisExecProvider {
 
         executables.put(OsArchitecture.MAC_OS_X_x86_64, "redis-server-" + redisVersion + "-darwin-amd64");
         executables.put(OsArchitecture.MAC_OS_X_arm64, "redis-server-" + redisVersion + "-darwin-arm64");
+
+        executables.put(OsArchitecture.WIN_x64_86, "redis-server-" + redisVersionWindows + "-windows-amd64.exe");
+
     }
 
     public RedisExecProvider override(OS os, String executable) {

@@ -10,6 +10,7 @@ public class OsArchitecture {
     
     public static final OsArchitecture MAC_OS_X_x86_64 = new OsArchitecture(OS.MAC_OS_X, Architecture.x86_64);
     public static final OsArchitecture MAC_OS_X_arm64 = new OsArchitecture(OS.MAC_OS_X, Architecture.arm64);
+    public static final OsArchitecture WIN_x64_86 = new OsArchitecture(OS.WINDOWS, Architecture.x86_64);
 
     private final OS os;
     private final Architecture arch;
