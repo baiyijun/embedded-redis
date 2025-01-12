@@ -4,11 +4,11 @@ import org.apache.commons.io.IOUtils;
 import redis.embedded.exceptions.EmbeddedRedisException;
 
 import java.io.*;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+
 
 abstract class AbstractRedisInstance implements Redis {
 
@@ -73,6 +73,7 @@ abstract class AbstractRedisInstance implements Redis {
                 } else {
                     outputStringBuffer.append("\n");
                     outputStringBuffer.append(outputLine);
+
                 }
             } while (!outputLine.matches(redisReadyPattern()));
         } finally {

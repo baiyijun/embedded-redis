@@ -62,7 +62,7 @@ public class OSDetector {
             }
         } catch (Exception e) {
             if (e instanceof OsDetectionException) {
-                throw (OsDetectionException)e;
+                throw (OsDetectionException) e;
             }
             throw new OsDetectionException(e);
         }
@@ -84,7 +84,7 @@ public class OSDetector {
             }
         } catch (Exception e) {
             if (e instanceof OsDetectionException) {
-                throw (OsDetectionException)e;
+                throw (OsDetectionException) e;
             }
             throw new OsDetectionException(e);
         }

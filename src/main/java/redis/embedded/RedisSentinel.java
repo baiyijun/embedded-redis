@@ -11,7 +11,9 @@ public class RedisSentinel extends AbstractRedisInstance {
         this.args = new ArrayList<String>(args);
     }
 
-    public static RedisSentinelBuilder builder() { return new RedisSentinelBuilder(); }
+    public static RedisSentinelBuilder builder() {
+        return new RedisSentinelBuilder();
+    }
 
     @Override
     protected String redisReadyPattern() {

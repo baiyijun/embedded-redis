@@ -17,7 +17,7 @@ public class RedisServer extends AbstractRedisInstance {
     public RedisServer(int port) {
         super(port);
         this.args = builder().port(port).build().args;
-	}
+    }
 
     public RedisServer(int port, int tlsPort) {
         super(port, tlsPort);

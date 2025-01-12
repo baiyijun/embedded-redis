@@ -84,7 +84,7 @@ public class RedisClusterBuilder {
 
     private List<Redis> buildServers() {
         List<Redis> servers = new ArrayList<Redis>();
-        for(ReplicationGroup g : groups) {
+        for (ReplicationGroup g : groups) {
             servers.add(buildMaster(g));
             buildSlaves(servers, g);
         }
@@ -118,7 +118,7 @@ public class RedisClusterBuilder {
     private Redis buildSentinel() {
         sentinelBuilder.reset();
         sentinelBuilder.port(nextSentinelPort());
-        for(ReplicationGroup g : groups) {
+        for (ReplicationGroup g : groups) {
             sentinelBuilder.masterName(g.masterName);
             sentinelBuilder.masterPort(g.masterPort);
             sentinelBuilder.quorumSize(quorumSize);

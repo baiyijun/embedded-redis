@@ -6,7 +6,6 @@ import redis.embedded.exceptions.RedisBuildingException;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +21,7 @@ public class RedisSentinelBuilder {
 
     private File executable;
     private RedisExecProvider redisExecProvider = RedisExecProvider.defaultProvider();
-    private String bind="127.0.0.1";
+    private String bind = "127.0.0.1";
     private Integer port = 26379;
     private int masterPort = 6379;
     private String masterName = "mymaster";
@@ -134,7 +133,7 @@ public class RedisSentinelBuilder {
         if (redisConfigBuilder == null) {
             addDefaultReplicationGroup();
         }
-        setting("bind "+bind);
+        setting("bind " + bind);
         setting(String.format(PORT_LINE, port));
         final String configString = redisConfigBuilder.toString();
 
