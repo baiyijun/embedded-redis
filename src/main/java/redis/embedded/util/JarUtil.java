@@ -20,7 +20,7 @@ public class JarUtil {
         
         File file = new File(tmpDir, path);
         FileUtils.copyURLToFile(Resources.getResource(path), file);
-        file.deleteOnExit();
+        //file.deleteOnExit();
         
         return file;
     }

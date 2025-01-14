@@ -69,7 +69,7 @@ public class RedisExecProvider {
         }
         
         String executablePath = executables.get(osArch);
-        if (dataPath != null) {
+        if (dataPath == null) {
             dataPath = Files.createTempDir().getAbsolutePath();
         }
         return fileExists(executablePath) ? new File(executablePath) : JarUtil.extractExecutableFromJar(dataPath, executablePath);
