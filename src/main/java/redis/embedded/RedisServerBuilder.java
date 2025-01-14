@@ -105,7 +105,7 @@ public class RedisServerBuilder {
         if (redisConf == null && redisConfigBuilder != null) {
             File redisConfigFile;
             if (redisExecProvider.getDataPath() != null) {
-                redisConfigFile = FileUtil.file(redisExecProvider.get(), resolveConfigName() + ".conf");
+                redisConfigFile = FileUtil.file(redisExecProvider.getDataPath(), resolveConfigName() + ".conf");
             } else {
                 redisConfigFile = File.createTempFile(resolveConfigName(), ".conf");
             }
