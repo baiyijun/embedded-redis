@@ -6,21 +6,24 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 public class OSDetector {
-
+    
     public static OS getOS() {
         String osName = System.getProperty("os.name").toLowerCase();
-
+        
         if (osName.contains("win")) {
             return OS.WINDOWS;
-        } else if (osName.contains("nix") || osName.contains("nux") || osName.contains("aix")) {
+        }
+        else if (osName.contains("nix") || osName.contains("nux") || osName.contains("aix")) {
             return OS.UNIX;
-        } else if ("Mac OS X".equalsIgnoreCase(osName)) {
+        }
+        else if ("Mac OS X".equalsIgnoreCase(osName)) {
             return OS.MAC_OS_X;
-        } else {
+        }
+        else {
             throw new OsDetectionException("Unrecognized OS: " + osName);
         }
     }
-
+    
     public static Architecture getArchitecture() {
         OS os = getOS();
         switch (os) {
@@ -34,18 +37,19 @@ public class OSDetector {
                 throw new OsDetectionException("Unrecognized OS: " + os);
         }
     }
-
+    
     private static Architecture getWindowsArchitecture() {
         String arch = System.getenv("PROCESSOR_ARCHITECTURE");
         String wow64Arch = System.getenv("PROCESSOR_ARCHITEW6432");
-
+        
         if (arch.endsWith("64") || wow64Arch != null && wow64Arch.endsWith("64")) {
             return Architecture.x86_64;
-        } else {
+        }
+        else {
             return Architecture.x86;
         }
     }
-
+    
     private static Architecture getUnixArchitecture() {
         try {
             Process proc = Runtime.getRuntime().exec("uname -m");
@@ -67,7 +71,7 @@ public class OSDetector {
             throw new OsDetectionException(e);
         }
     }
-
+    
     private static Architecture getMacOSXArchitecture() {
         try {
             Process proc = Runtime.getRuntime().exec("uname -m");

@@ -6,24 +6,25 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class RedisServer extends AbstractRedisInstance {
+public class RedisServer
+        extends AbstractRedisInstance {
     private static final String REDIS_READY_PATTERN = ".*(R|r)eady to accept connections.*";
     private static final int DEFAULT_REDIS_PORT = 6379;
-
+    
     public RedisServer() {
         this(DEFAULT_REDIS_PORT);
     }
-
+    
     public RedisServer(int port) {
         super(port);
         this.args = builder().port(port).build().args;
     }
-
+    
     public RedisServer(int port, int tlsPort) {
         super(port, tlsPort);
         this.args = builder().port(port).tlsPort(tlsPort).build().args;
     }
-
+    
     public RedisServer(File executable, int port) {
         super(port);
         this.args = Arrays.asList(
@@ -31,7 +32,7 @@ public class RedisServer extends AbstractRedisInstance {
                 "--port", Integer.toString(port)
         );
     }
-
+    
     public RedisServer(RedisExecProvider redisExecProvider, int port) throws IOException {
         super(port);
         this.args = Arrays.asList(
@@ -39,16 +40,16 @@ public class RedisServer extends AbstractRedisInstance {
                 "--port", Integer.toString(port)
         );
     }
-
+    
     RedisServer(List<String> args, int port, int tlsPort) {
         super(port, tlsPort);
         this.args = new ArrayList<>(args);
     }
-
+    
     public static RedisServerBuilder builder() {
         return new RedisServerBuilder();
     }
-
+    
     @Override
     protected String redisReadyPattern() {
         return REDIS_READY_PATTERN;

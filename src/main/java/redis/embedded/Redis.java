@@ -6,12 +6,12 @@ import java.util.List;
 
 public interface Redis {
     boolean isActive();
-
+    
     void start() throws EmbeddedRedisException;
-
+    
     void stop() throws EmbeddedRedisException;
-
+    
     List<Integer> ports();
-
+    
     List<Integer> tlsPorts();
 }
