@@ -16,11 +16,12 @@ public class JarUtil {
     
     public static File extractFileFromJar(String dataPath, String path) throws IOException {
         File tmpDir = new File(dataPath);
-        tmpDir.deleteOnExit();
+        if (!tmpDir.exists()) {
+            FileUtils.forceMkdir(tmpDir);
+        }
         
         File file = new File(tmpDir, path);
         FileUtils.copyURLToFile(Resources.getResource(path), file);
-        //file.deleteOnExit();
         
         return file;
     }
