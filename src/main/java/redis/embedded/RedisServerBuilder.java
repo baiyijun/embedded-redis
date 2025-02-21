@@ -108,10 +108,10 @@ public class RedisServerBuilder {
                 if (!directory.exists()) {
                     FileUtil.mkdir(directory);
                 }
-                redisConfigFile = File.createTempFile(resolveConfigName(), ".conf", directory);
+                redisConfigFile = FileUtil.touch(directory, resolveConfigName());
             }
             else {
-                redisConfigFile = File.createTempFile(resolveConfigName(), ".conf");
+                redisConfigFile = FileUtil.touch(FileUtil.getTmpDirPath(), resolveConfigName());
             }
             Files.asCharSink(redisConfigFile, StandardCharsets.UTF_8).write(redisConfigBuilder.toString());
             redisConf = redisConfigFile.getAbsolutePath();
@@ -125,7 +125,7 @@ public class RedisServerBuilder {
     }
     
     private String resolveConfigName() {
-        return CONF_FILENAME + "_" + port;
+        return CONF_FILENAME + "_" + port + ".conf";
     }
     
     private List<String> buildCommandArgs() {
