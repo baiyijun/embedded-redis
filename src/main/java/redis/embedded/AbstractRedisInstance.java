@@ -119,7 +119,9 @@ abstract class AbstractRedisInstance
     
     private void tryWaitFor() {
         try {
+            LOG.info("Waiting for redis instance to stop...");
             redisProcess.waitFor();
+            LOG.info("Redis instance stopped");
         } catch (InterruptedException e) {
             throw new EmbeddedRedisException("Failed to stop redis instance", e);
         }
